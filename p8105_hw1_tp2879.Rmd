@@ -66,7 +66,7 @@ mean(pull(hw_1_df, vec_factor))
 ```
 
 
-# Discussion
+## Discussion
 The mean for the random sample is `r mean(pull(hw_1_df, sample_normal))`. 
 
 The mean for the logical vector is `r mean(pull(hw_1_df, vec_logical))`. 
@@ -75,7 +75,7 @@ When computing the mean of the character vector, a warning message appears and o
 
 When computing the mean of the factor vector, a warning message appears and outputs "`r mean(pull(hw_1_df, vec_factor))`" as the mean. We are not able to find the mean as there are no numerical values or ways to average between the different factor "levels".
 
-# Applying the `as.numeric()` Function
+## Applying the `as.numeric()` Function
 ```{r eval = FALSE}
 mutate(hw_1_df, 
     numeric_logical = as.numeric(vec_logical),
