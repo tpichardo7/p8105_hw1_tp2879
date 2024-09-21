@@ -5,11 +5,12 @@ output: github_document
 
 ```{r setup, echo = FALSE, message = FALSE}
 library(tidyverse)
+library(dplyr)
 ```
 
 # Problem 1
 ## Downloading the penguins Dataset
-```{r echo = FALSE}
+```{r}
 data("penguins", package = "palmerpenguins")
 
 dataset_size = c(nrow(penguins), ncol(penguins))
@@ -70,8 +71,13 @@ The mean for the random sample is `r mean(pull(hw_1_df, sample_normal))`. The me
 When computing the mean of the character vector, a warning message appears and outputs "`r mean(pull(hw_1_df, vec_char))`" as the mean. We are not able to find the mean as there are no numerical values in the character vector.
 When computing the mean of the factor vector, a warning message appears and outputs "`r mean(pull(hw_1_df, vec_factor))`" as the mean. We are not able to find the mean as there are no numerical values or ways to average between the different factor "levels".
 
+# Applying the as.numeric Function
 ```{r eval = FALSE}
-as.numeric(vec_logical)
-as.numeric(vec_char)
-as.numeric(vec_factor)
+mutate(hw_1_df, 
+    numeric_logical = as.numeric(vec_logical),
+    numeric_char = as.numeric(vec_char),
+    numeric_factor = as.numeric(vec_factor)
+  )
 ```
+
+Applying as.numeric to the logical vector converts it to numeric values. Applying as.numeric to a character vector will give "NA" for all entries because character strings cannot be changed to numeric. Applying as.numeric to a factor vector will give integer codes corresponding to the different factor "levels", which could compute an arithmetic mean although the mean refers to the integer codes. 
